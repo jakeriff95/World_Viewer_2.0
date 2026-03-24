@@ -1,0 +1,18 @@
+[
+  {
+    "id": "inc-1",
+    "title": "Crash on I-95",
+    "lat": 38.924,
+    "lon": -77.041,
+    "severity": "major",
+    "status": "active"
+  },
+  {
+    "id": "inc-2",
+    "title": "Disabled vehicle on New York Ave",
+    "lat": 38.907,
+    "lon": -76.991,
+    "severity": "moderate",
+    "status": "active"
+  }
+]
