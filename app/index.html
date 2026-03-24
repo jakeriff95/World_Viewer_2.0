@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worldview MVP</title>
+  <link rel="stylesheet" href="/app.css" />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://tile.openstreetmap.org" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/cesium@1.118/Build/Cesium/Cesium.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/cesium@1.118/Build/Cesium/Widgets/widgets.css" />
+</head>
+<body>
+  <div class="layout">
+    <div class="map-wrap">
+      <div class="topbar">
+        <input id="searchInput" type="text" placeholder="Search place, city, country" />
+        <button id="goBtn">Go</button>
+        <button id="settingsBtn">Settings</button>
+        <button id="snapshotBtn">Snapshot now</button>
+        <button id="globeBtn">Globe</button>
+      </div>
+      <div id="map"></div>
+      <div id="globe" class="hidden"></div>
+      <div id="selectedCard" class="selected-card hidden"></div>
+    </div>
+    <aside class="sidebar">
+      <h1>Worldview MVP</h1>
+      <p class="muted">Viewport-driven local situational awareness app.</p>
+
+      <section>
+        <h2>Layers</h2>
+        <div class="toggles">
+          <label><input type="checkbox" data-layer="flights" checked /> Flights</label>
+          <label><input type="checkbox" data-layer="ais" /> Ships</label>
+          <label><input type="checkbox" data-layer="satellites" checked /> Satellites</label>
+          <label><input type="checkbox" data-layer="earthquakes" checked /> Earthquakes</label>
+          <label><input type="checkbox" data-layer="naturalEvents" checked /> Natural Events</label>
+          <label><input type="checkbox" data-layer="weatherRadar" checked /> Weather Radar</label>
+          <label><input type="checkbox" data-layer="weatherTemp" /> Weather Temp</label>
+          <label><input type="checkbox" data-layer="weatherWind" /> Weather Wind</label>
+          <label><input type="checkbox" data-layer="trainStations" checked /> Train Stations</label>
+          <label><input type="checkbox" data-layer="trainLines" checked /> Train Lines</label>
+          <label><input type="checkbox" data-layer="busStops" /> Bus Stops</label>
+          <label><input type="checkbox" data-layer="transitVehicles" /> Transit Vehicles</label>
+          <label><input type="checkbox" data-layer="trafficIncidents" /> Traffic Incidents</label>
+          <label><input type="checkbox" data-layer="cameras" /> Cameras</label>
+          <label><input type="checkbox" data-layer="custom" /> Custom</label>
+        </div>
+        <button id="refreshBtn">Refresh layers</button>
+      </section>
+
+      <section>
+        <h2>Viewport Summary</h2>
+        <div id="summary"></div>
+      </section>
+
+      <section>
+        <h2>Watchlists</h2>
+        <div class="watchlist-controls">
+          <input id="watchName" type="text" placeholder="Current view name" />
+          <input id="watchRadius" type="number" min="5" step="5" value="60" />
+          <button id="addWatchBtn">Add current center</button>
+        </div>
+        <div id="watchlists"></div>
+      </section>
+
+      <section>
+        <h2>Analyst</h2>
+        <textarea id="analystPrompt" rows="5" placeholder="What is happening in the current view?"></textarea>
+        <button id="analystBtn">Run analyst</button>
+        <pre id="analystOutput"></pre>
+      </section>
+    </aside>
+  </div>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="settings-form">
+      <h2>Settings</h2>
+      <label>OpenAI API Key <input id="cfgOpenAiKey" type="password" /></label>
+      <label>OpenAI Model <input id="cfgOpenAiModel" type="text" /></label>
+      <label>Google Maps API Key <input id="cfgGoogleKey" type="text" /></label>
+      <label>Cesium ion Token <input id="cfgCesium" type="text" /></label>
+      <label>OpenSky Client ID <input id="cfgOpenSkyId" type="text" /></label>
+      <label>OpenSky Client Secret <input id="cfgOpenSkySecret" type="password" /></label>
+      <label>AIS Feed URL <input id="cfgAisUrl" type="text" /></label>
+      <label>Traffic Incidents URL <input id="cfgTrafficUrl" type="text" /></label>
+      <label>Cameras URL <input id="cfgCamerasUrl" type="text" /></label>
+      <label>Custom GeoJSON URL <input id="cfgCustomUrl" type="text" /></label>
+      <label>Transit Feeds JSON <textarea id="cfgTransitFeeds" rows="6" placeholder='[{"name":"WMATA Vehicles","url":"http://localhost:8787/examples/transit-vehicles.example.json"}]'></textarea></label>
+      <div class="dialog-actions">
+        <button value="cancel">Cancel</button>
+        <button id="saveSettingsBtn" value="default">Save settings</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
