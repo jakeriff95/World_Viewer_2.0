@@ -1,0 +1,20 @@
+[
+  {
+    "id": "red-101",
+    "lat": 38.898,
+    "lon": -77.028,
+    "heading": 180,
+    "route_id": "Red",
+    "trip_id": "Trip-101",
+    "label": "Red 101"
+  },
+  {
+    "id": "bus-42",
+    "lat": 38.902,
+    "lon": -77.015,
+    "heading": 65,
+    "route_id": "42",
+    "trip_id": "Trip-42A",
+    "label": "Bus 42"
+  }
+]
