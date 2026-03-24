@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.034, 38.901] },
+      "properties": {
+        "name": "16th & U St NW Camera",
+        "url": "https://example.com/cam/16th-u"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.009, 38.889] },
+      "properties": {
+        "name": "Capitol Area Camera",
+        "url": "https://example.com/cam/capitol"
+      }
+    }
+  ]
+}
